@@ -1,0 +1,134 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">saleagents_commission_listing.saleagents_commission_listing_data_source</item>
+            <item name="deps" xsi:type="string">saleagents_commission_listing.saleagents_commission_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">saleagents_commission_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add A New Row</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/add</item>
+            </item>
+        </item>
+    </argument>
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <filters name="listing_filters" />
+        <columnsControls name="columns_controls"/>
+
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Row</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+
+    <dataSource name="saleagents_commission_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">saleagents_commission_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">post_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <!-- columns -->
+    <columns name="saleagents_commission_columns">
+        <column name="order_items_sku">
+            <settings>
+                <label translate="true">SKU</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="order_items_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Product Name</label>
+            </settings>
+        </column>
+        <column name="commission_value" class="AHT\SaleAgents\Ui\Component\Listing\Column\Commissiontype">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">120</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Value</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="commission_type" class="AHT\SaleAgents\Ui\Component\Listing\Column\Commissiontype">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">122</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Type</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="saleagent_name">
+            <settings>
+                <label translate="true">Sales Agent</label>
+            </settings>
+        </column>
+        <column name="ordered_qty">
+            <settings>
+                <label translate="true">QTY</label>
+            </settings>
+        </column>
+        <column name="result_commission" class="AHT\SaleAgents\Ui\Component\Listing\Column\Commissiontype">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">121</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Result</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="product_price_final" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <label translate="true">Original Price</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+    </columns>
+</listing>
