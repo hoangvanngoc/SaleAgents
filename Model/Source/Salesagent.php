@@ -38,6 +38,7 @@ class Salesagent extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSour
         return $this->optArray;
     }
 
+    
     /**
      * @return array
      */
