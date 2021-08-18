@@ -61,7 +61,7 @@ class AddCustomerAttribute implements DataPatchInterface
             'required' => false,
             'system'       => 0
         ]);
-        $newAttribute = $this->eavConfig->getAttribute(Customer::ENTITY, 'is_sales_agent ');
+        $newAttribute = $this->eavConfig->getAttribute(Customer::ENTITY, 'is_sales_agent');
         $newAttribute->addData([
             'used_in_forms' => ['adminhtml_checkout','adminhtml_customer'],
             'attribute_set_id' => $attributeSetId,

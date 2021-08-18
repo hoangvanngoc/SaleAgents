@@ -25,14 +25,16 @@ class Saleagents extends \Magento\Framework\View\Element\Template
     public function getProductCollection()
     {
         $customerId = $this->_customerSession->getCustomer()->getId();
+
         $collection = $this->_productCollectionFactory->create();
         $collection->addAttributeToSelect('*')->addFieldToFilter('sale_agent_id', $customerId);
         $aht_sales_agent = $this->_resource->getTableName('aht_sales_agent');
         $collection->getSelect()->join(
-            ['order_sa' => $aht_sales_agent],
-            'e.entity_id = order_sa.order_item_id '
+            ['order_key' => $aht_sales_agent],
+            'e.entity_id = order_key.order_item_id '
            );
         $collection->setPageSize(5);
+
         return $collection;
     }
 }
