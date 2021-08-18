@@ -31,7 +31,7 @@ class Saleagents extends \Magento\Framework\View\Element\Template
         $aht_sales_agent = $this->_resource->getTableName('aht_sales_agent');
         $collection->getSelect()->join(
             ['order_key' => $aht_sales_agent],
-            'e.entity_id = order_key.order_item_id '
+            'e.entity_id = order_key.order_item_id'
            );
         $collection->setPageSize(5);
 

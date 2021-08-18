@@ -26,7 +26,7 @@ class Salesagent extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSour
      */
     public function getAllOptions() {
         if ($this->optArray === null) {
-            $collection = $this->_customerFactory->create()->getCollection()->addFieldToFilter('is_sales_agent',['eq' => 0], ['eq'=>1]);
+            $collection = $this->_customerFactory->create()->getCollection()->addFieldToFilter('is_sales_agent',[['eq' => 0], ['eq'=>1]]);
             foreach ($collection as $item) {
                 $this->optArray[] = [
                     'label' => ' '.$item->getFirstname(). ' '.$item->getMiddlename().' '.$item->getLastname(),
