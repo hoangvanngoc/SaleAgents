@@ -39,7 +39,7 @@ $formatCurrency = $this->helper('Magento\Framework\Pricing\Helper\Data');
                     <tr>
                         <td data-th="<?= $block->escapeHtml(__('Product Name #')) ?>" class="col id"><a href="<?= $products->getProductUrl()  ?>"><?= $block->escapeHtml($products->getName()) ?></a></td>
                         <td data-th="<?= $block->escapeHtml(__('SKU')) ?>" class="col date"><?= /* @noEscape */ $block->escapeHtml($products->getSku()) ?></td>
-                        <td data-th="<?= $block->escapeHtml(__('Price')) ?>" class="col date"><?= /* @noEscape */ $formatCurrency->currency($products->getOrderItemPrice()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Price')) ?>" class="col date"><?= /* @noEscape */ $formatCurrency->currency($products->getPrice()) ?></td>
                         <?php $extra = $block->getChildBlock('extra.container'); ?>
                         <?php if ($extra) : ?>
                             <?php $extra->setOrder($products); ?>

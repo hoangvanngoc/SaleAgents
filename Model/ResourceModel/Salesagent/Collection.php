@@ -1,6 +1,5 @@
 <?php
 namespace AHT\SaleAgents\Model\ResourceModel\Salesagent;
-
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     // protected $_idFieldName = 'entity_id';

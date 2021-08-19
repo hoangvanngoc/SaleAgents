@@ -28,13 +28,14 @@ class Saleagents extends \Magento\Framework\View\Element\Template
 
         $collection = $this->_productCollectionFactory->create();
         $collection->addAttributeToSelect('*')->addFieldToFilter('sale_agent_id', $customerId);
-        $aht_sales_agent = $this->_resource->getTableName('aht_sales_agent');
-        $collection->getSelect()->join(
-            ['order_key' => $aht_sales_agent],
-            'e.entity_id = order_key.order_item_id'
-           );
-        $collection->setPageSize(5);
 
+        $collection->getSelect()->join(
+            ['test' => 'catalog_product_entity_varchar'],
+            'test.entity_id = e.entity_id and test.attribute_id = 73'
+           );
+
+        $collection->setPageSize(5);
+        $a = 1;
         return $collection;
     }
 }
